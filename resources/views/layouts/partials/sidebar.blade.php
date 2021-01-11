@@ -1,0 +1,63 @@
+<div class="flex">
+    <div class="bg-blue-300 w-full">
+        
+        <div class="bg-nav h-12 text-white cursor-pointer hover:bg-ye hover:text-side flex">
+            <div class=" flex justify-center items-center w-3/12">
+            <i class="material-icons md-36">dashboard</i>
+            </div>
+            <div class=" w-9/12 flex items-center ">
+            <h1>Dashboard</h1>
+            </div>
+        </div>
+        <div class="bg-nav h-12 text-white cursor-pointer hover:bg-ye hover:text-side flex">
+            <div class=" flex justify-center items-center w-3/12">
+            <i class="material-icons md-36">domain</i>
+            </div>
+            <div class=" w-9/12 flex items-center">
+            <h1>Campus</h1>
+            </div>
+        </div>
+        <div class="bg-nav h-12 text-white cursor-pointer hover:bg-ye hover:text-side flex">
+            <div class=" flex justify-center items-center w-3/12">
+            <i class="material-icons md-36">people</i>
+            </div>
+            <div class=" w-9/12 flex items-center ">
+            <h1>Students</h1>
+            </div>
+        </div>
+        <div class="bg-nav h-12 text-white cursor-pointer hover:bg-ye hover:text-side flex">
+            <div class=" flex justify-center items-center w-3/12">
+            <i class="material-icons md-36">view_column</i>
+            </div>
+            <div class=" w-9/12 flex items-center ">
+            <h1>Organization</h1>
+            </div>
+        </div>
+        <div class="bg-nav h-12 text-white cursor-pointer hover:bg-ye hover:text-side flex">
+            <div class=" flex justify-center items-center w-3/12">
+            <i class="material-icons md-36">view_module</i>
+            </div>
+            <div class=" w-9/12 flex items-center ">
+            <h1>Party-list</h1>
+            </div>
+        </div>
+        <div class="bg-nav h-12 text-white cursor-pointer hover:bg-ye hover:text-side flex">
+            <div class=" flex justify-center items-center w-3/12">
+            <i class="material-icons md-36">safety_divider</i>
+            </div>
+            <div class=" w-9/12 flex items-center ">
+            <h1>Position</h1>
+            </div>
+        </div>
+        <div class="bg-nav h-12 text-white cursor-pointer hover:bg-ye hover:text-side flex">
+            <div class=" flex justify-center items-center w-3/12">
+            <i class="material-icons md-36">person</i>
+            </div>
+            <div class=" w-9/12 flex items-center ">
+            <h1>Candidates</h1>
+            </div>
+        </div>
+        
+    </div>
+    <div class="bg-ye w-1"></div>
+</div>
