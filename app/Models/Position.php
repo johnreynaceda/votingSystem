@@ -9,4 +9,8 @@ class Position extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function candidates(){
+        return $this->hasMany('App\Models\Candidate');
+    }
 }

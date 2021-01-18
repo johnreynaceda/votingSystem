@@ -17,6 +17,6 @@ class Campus extends Model
         return $this->hasMany('App\Models\Partylist');
     }
     public function users(){
-        return $this->hasMany('App\Models\User');
+        return $this->belongsToMany('App\Models\User');
     }
 }

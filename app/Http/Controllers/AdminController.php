@@ -27,4 +27,7 @@ class AdminController extends Controller
     public function candidate(){
         return view('admin.candidate');
     }
+    public function user(){
+        return view('admin.user');
+    }
 }

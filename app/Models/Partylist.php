@@ -13,4 +13,7 @@ class Partylist extends Model
     public function campus(){
         return $this->belongsTo('App\Models\Campus');
     }
+    public function candidates(){
+        return $this->belongsTo('App\Models\Candidate');
+    }
 }

@@ -71,6 +71,33 @@
                 </div>
             </div>
         </a>
+        <a href="{{ route('admin-user') }}">
+            <div class="bg-nav h-12 text-white cursor-pointer hover:bg-ye hover:text-side flex {{ Request::routeIs('admin-user') ? 'bg-ye text-side' : ''}}">
+                <div class=" flex justify-center items-center w-3/12">
+                <i class="material-icons md-36">supervised_user_circle</i>
+                </div>
+                <div class=" w-9/12 flex items-center ">
+                <h1>Users</h1>
+                </div>
+            </div>
+        </a>
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+        <a href="{{ route('logout') }}"
+        onclick="event.preventDefault();
+                    this.closest('form').submit();">
+            <div class="bg-nav h-12 text-white cursor-pointer hover:bg-ye hover:text-side flex ">
+                <div class=" flex justify-center items-center w-3/12">
+                <i class="material-icons md-36">logout</i>
+                </div>
+                <div class=" w-9/12 flex items-center ">
+                <h1>Sign out</h1>
+                </div>
+            </div>
+        </a>
+        </form>
+
+           
         
     </div>
     <div class="bg-ye w-1"></div>

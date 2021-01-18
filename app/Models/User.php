@@ -23,12 +23,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
-
+    protected $guarded = [];
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -60,9 +55,13 @@ class User extends Authenticatable
     ];
 
     public function organizations(){
-        return $this->hasMany('App\Models\Organization');
+        return $this->belongsToMany('App\Models\Organization', 'user_organization');
     }
     public function campus(){
-        return $this->hasOne('App\Models\Campus');
+        return $this->belongsTo('App\Models\Campus');
     }
+    public function candidates(){
+        return $this->belongsTo('App\Models\Candidate');
+    }
+    
 }

@@ -21,15 +21,15 @@ class CreateUsersTable extends Migration
             $table->string('address')->nullable();
             $table->string('birthdate')->nullable();
             $table->integer('age')->nullable();
-            $table->integer('contact')->nullable();
-            $table->unsignedBigInteger('organization_id')->nullable();
+            $table->string('contact')->nullable();
             $table->string('course')->nullable();
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('pass')->nullable();
             $table->integer('sidn')->nullable();
             $table->unsignedBigInteger('campus_id')->nullable();
             $table->integer('isvoted')->default(0);
-            $table->integer('isadmin')->default(1);
+            $table->integer('isadmin')->default(0);
             $table->timestamps();
         });
     }

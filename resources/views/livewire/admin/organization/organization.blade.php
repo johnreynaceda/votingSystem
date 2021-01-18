@@ -23,7 +23,7 @@
                 class="bg-gradient-to-r from-main text-white  via-green-400 to-main rounded-md shadow-md ">
                 <div class="flex flex-col p-1  justify-center items-center">
                     <div class="text">
-                        <h1 class="font-medium text-center underline">{{ $organization->organization }}</h1>
+                        <h1 class="font-medium text-center underline">{{ $organization->organization }} - {{ $organization->campus->campus }}</h1>
                     </div>
                     <div class="flex p-2 items-center justify-center w-full ">
                         <label for="{{ $organization->organization }}" class="flex items-center cursor-pointer">

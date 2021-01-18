@@ -1,0 +1,64 @@
+<div  class="bg-nav absolute right-0 top-0 h-screen w-64 p-2">
+                        <div class="flex">
+                            <div class=" flex text-white hover:text-red-600 justify-center items-center"><i class="material-icons">close</i></div>
+                        </div>
+                        <div class="relative">
+                            <img src="{{ asset('images/sksulogo.png') }}" class="opacity-25 absolute mt-36 shadow-l-lg" alt="">
+                        </div>
+                        <div class="flex space-x-2 py-2 border-b mt-10 relative justify-center items-center text-white">
+                            <i class="material-icons md-36">person_pin</i>
+                            <h1 class="text-sm font-medium">Please Login your Account!</h1>
+                        </div>
+                        <div class="relative mt-5  ">
+                         <form action="">
+                            <div class="mb-3 text-white ">
+                                <label for="">Student ID Number:</label>
+                                <input wire:model="" type="text" class="h-10 text-side w-full outline-none focus:border-side  text-sm px-3 mt-1 focus:shadow-md rounded-sm border" placeholder="53598">
+                                @error('position_name') <span class="text-red-700 text-sm error">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="mb-5 text-white ">
+                                <label for="">Password:</label>
+                                <input wire:model="position_name" type="text" class="h-10 text-side w-full outline-none focus:border-side text-sm px-3 mt-1 focus:shadow-md rounded-sm border" placeholder="*********">
+                                @error('position_name') <span class="text-red-700 text-sm error">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="mb-5">
+                                <button class="bg-white p-1 px-4 rounded text-side font-medium shadow-md hover:bg-nav hover:text-white">LOGIN</button>
+                            </div>
+                            <div x-data="{ show: @entangle('showModal') }" class="relative">
+                                <div wire:click="request" class=" text-white text-sm underline hover:text-blue-300">Request for your password here!</div>
+                                <div  wire:loading wire:target="request">
+                                    <div class="loadingio-spinner-dual-ball-7d9kijy1d27"><div class="ldio-es4i676yvyv">
+                                        <div></div><div></div><div></div>
+                                        </div></div>
+                                    </div>
+                                <div tabindex="0" class="z-40 overflow-auto left-0 top-0 bottom-0 right-0 w-full h-full fixed" style="background-color: rgba(0,0,0,.5);" x-show="show">
+                                    <div class="text-left bg-white h-auto mx-96  mt-20" @click.away="show = false">
+                                        <div class="flex bg-nav text-white">
+                                            <div class=" px-3 py-2 font-medium text-lg w-11/12">
+                                             <h1>REQUEST PASSWORD</h1>
+                                         </div>
+                                            <div class=" flex justify-center items-center w-1/12">
+                                             <div @click="show = false" class="hover:bg-red-600 p-1 cursor-pointer rounded-full flex justify-center items-center"><i class="material-icons">close</i></div>
+                                         </div>
+                                        </div>
+                                        <div class="body bg-white text-side ">
+                                            <form class="flex space-x-7 py-2" action="">
+                                                <div class="p-2 px-20 mt-5">
+                                                    <div class="mb-5 text-side">
+                                                        <label for="">YOUR STUDENT ID NUMBER:</label>
+                                                        <input  type="number" class="h-10 w-full shadow-md outline-none focus:border-green-400 text-sm px-3 mt-1 focus:shadow-md rounded-sm border" placeholder="53598">
+                                                        @error('firstname') <span class="text-red-700 text-sm error">{{ $message }}</span> @enderror
+                                                    </div>
+                                                    <div class="flex mb-3 justify-center items-center">
+                                                        <button class="bg-nav shadow-md p-1 px-4 text-white">SEND REQUEST</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                           </div>
+                                       </div>
+                                    </div>
+                            </div>
+                         </form>
+                        </div>
+
+                    </div>
