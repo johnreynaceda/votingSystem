@@ -9,12 +9,15 @@ use Livewire\WithPagination;
 
 class Organization extends Component
 {
+    protected $listeners = ['refreshProducts'];
     use WithPagination;
     public $organization_name,$organization_id,$campus,$campuses,$updateMode=false;
-
+    public $isdefault=1,$check;
     public function render()
     {
-        $this->campuses = Campus::all();
+        
+      
+                $this->campuses = Campus::all();
         return view('livewire.admin.organization.organization',[
             'organizations' => organizationModel::paginate(12),
         ]);
@@ -72,9 +75,32 @@ class Organization extends Component
        $this->campus =null;
     }
 
-    public function default(){
-        
+    public function togglein($id){
+        $data = organizationModel::find($id);
+       
+        if($data->where('isdefault',1)->count() == 0){
+            $data->update([
+                'isdefault' => $this->isdefault,
+            ]);
+            $this->emit('alert',['type'=>'success','message' => 'Organization set to default']);
+        }else{
+            
+            return redirect()->to('/admin/organization');
+            $this->emit('alert',['type'=>'error','message' => 'There have already a default organization ']);
+        }
     }
+
+            
+    public function toggleout($id){
+        $data = organizationModel::find($id);
+       
+            $data->update([
+                'isdefault' => 0,
+            ]);
+            $this->emit('alert',['type'=>'success','message' => 'Organization set to normal ']);
+        }
+
+       
     public function delete($id){
         organizationModel::find($id)->delete();
         $this->emit('alert',['type'=>'error','message' => 'Organization deleted Successfully']);

@@ -96,9 +96,6 @@
             </div>
         </a>
         </form>
-
-           
-        
     </div>
     <div class="bg-ye w-1"></div>
 </div>

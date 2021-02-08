@@ -20,7 +20,7 @@ class Student
             if(auth()->user()->isadmin == 0){
                 return $next($request);
             }else{
-                return redirect('/student');
+                return redirect('/admin');
         }
        
     }

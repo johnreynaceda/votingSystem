@@ -6,18 +6,19 @@
             </div></div>
         </div>
     <div tabindex="0" class="z-40 overflow-auto left-0 top-0 bottom-0 right-0 w-full h-full fixed" style="background-color: rgba(0,0,0,.5);" x-show="show">
-        <div class="text-left bg-white h-auto mx-96  mt-20" @click.away="open = false">
+        <div class="text-left bg-white h-auto md:mx-96 mx-6  mt-20" @click.away="open = false">
             <div class="flex bg-nav text-white">
                 <div class=" px-3 py-2 font-medium text-lg w-11/12">
                  <h1>REQUEST PASSWORD</h1>
              </div>
-                <div class=" flex justify-center items-center w-1/12">
+                <div class=" flex justify-center mr-2 items-center w-1/12">
                  <div @click="show = false" class="hover:bg-red-600 p-1 cursor-pointer rounded-full flex justify-center items-center"><i class="material-icons">close</i></div>
              </div>
             </div>
             <div class="body bg-white text-side ">
+               
                 <form class="flex space-x-7 py-2" action="">
-                    <div class="p-2 px-20 mt-5">
+                    <div class="p-2 md:px-20 px-12 mt-5">
                         <div class="mb-5 text-side">
                             <label for="">YOUR STUDENT ID NUMBER:</label>
                             <input wire:model="sidn" type="number" class="h-10 w-full shadow-md outline-none focus:border-green-400 text-sm px-3 mt-1 focus:shadow-md rounded-sm border" placeholder="53598">

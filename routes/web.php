@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::get('/redirect', fn()=>view('welcome'))->middleware(['checkRole', 'auth']);
 //ADMINISTRATOR
 Route::get('/admin', 'App\Http\Controllers\AdminController@index')->name('admin-dashboard')->middleware('admin');
+Route::get('/admin/print', 'App\Http\Controllers\AdminController@print')->name('admin-print')->middleware('admin');
 Route::get('/admin/campus', 'App\Http\Controllers\AdminController@campus')->name('admin-campus')->middleware('admin');
 Route::get('/admin/student', 'App\Http\Controllers\AdminController@student')->name('admin-student')->middleware('admin');
 Route::get('/admin/organization', 'App\Http\Controllers\AdminController@organization')->name('admin-organization')->middleware('admin');
@@ -31,7 +32,8 @@ Route::get('/admin/candidate', 'App\Http\Controllers\AdminController@candidate')
 
 
 //STUDENT
-Route::get('/student', 'App\Http\Controllers\StudentController@index')->name('admin-dashboard')->middleware('student');
+Route::get('/student', 'App\Http\Controllers\StudentController@index')->name('student-dashboard')->middleware('student');
+Route::get('/student/account', 'App\Http\Controllers\StudentController@account')->name('student-account')->middleware('student');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

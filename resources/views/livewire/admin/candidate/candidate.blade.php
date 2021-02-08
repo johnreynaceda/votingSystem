@@ -6,7 +6,7 @@
        
         <option selected hidden disabled value="null">Select Organization</option>
          @forelse ($organizations as $organization)
-        <option value="{{ $organization->id }}">{{ $organization->organization }}</option>
+        <option value="{{ $organization->id }}">{{ $organization->organization }}-{{ $organization->campus->campus }}</option>
         @empty
         <option disabled value="">No Organization Available</option>
          @endforelse
@@ -79,47 +79,50 @@
                                     </div>
                                    @endif
                                 </div>
-                                <div class="mb-2 text-side">
-                                    <label for="">Partylist:</label>
-                                    {{ $party_id }}
-                                   <div class="flex space-x-2 items-center">
-                                    <input wire:model="partylist_name" type="text" class="h-8 w-10/12 outline-none focus:border-green-400 text-sm px-3 mt-1 focus:shadow-md rounded-sm border" placeholder="Partylist">
-                                    <div class="w-2/12  ">
-                                        <div wire:click.prevent="searchPartylist"  class="bg-nav mt-1 cursor-pointer hover:bg-green-600 p-1 text-white flex justify-center rounded-sm">
-                                            <i class="material-icons">search</i>
-                                        </div>
-                                    </div>
-                                   </div>
-                                   @error('partylist_name') <span class="text-red-700 text-sm error">{{ $message }}</span> @enderror
-                                   @if ($this->searchParty == false)
-
-                                       @else
-                                       <div class="rounded-sm p-1 border mt-1">
-                                           <div class="flex mb-1 p-1">
-                                               <div class="w-10/12">
-                                                <input wire:model="search" type="text" class="h-8  w-full outline-none focus:border-green-400 text-sm px-3  focus:shadow-md rounded-sm border" placeholder="Search Partylist">
-                                                </div>
-                                               <div class="border w-2/12 flex justify-center items-center">
+                                @if ($this->isdependent == 1)
+                                    @else
+                                    <div class="mb-2 text-side">
+                                        <label for="">Partylist:</label>
+                                        {{ $party_id }}
+                                       <div class="flex space-x-2 items-center">
+                                        <input wire:model="partylist_name" type="text" class="h-8 w-10/12 outline-none focus:border-green-400 text-sm px-3 mt-1 focus:shadow-md rounded-sm border" placeholder="Partylist">
+                                        <div class="w-2/12  ">
+                                            <div wire:click.prevent="searchPartylist"  class="bg-nav mt-1 cursor-pointer hover:bg-green-600 p-1 text-white flex justify-center rounded-sm">
                                                 <i class="material-icons">search</i>
-                                                </div>
-                                           </div>
-                                        @forelse ($partylist as $item)
-                                        <div class="flex space-x-2">
-                                            <div class="w-10/12 border-b">
-                                         <h1>{{ $item->partylist}}-Partylist</h1>
-                                             </div>
-                                            <div class="w-2/12">
-                                         <div wire:click="getParty({{ $item->id }})" class="flex bg-side text-white rounded-sm cursor-pointer hover:bg-gray-600 justify-center items-center ">
-                                             <i class="material-icons">playlist_add_check</i>
-                                         </div>
-                                             </div>
+                                            </div>
                                         </div>
-                                        @empty
-                                            
-                                        @endforelse
+                                       </div>
+                                       @error('partylist_name') <span class="text-red-700 text-sm error">{{ $message }}</span> @enderror
+                                       @if ($this->searchParty == false)
+    
+                                           @else
+                                           <div class="rounded-sm p-1 border mt-1">
+                                               <div class="flex mb-1 p-1">
+                                                   <div class="w-10/12">
+                                                    <input wire:model="search" type="text" class="h-8  w-full outline-none focus:border-green-400 text-sm px-3  focus:shadow-md rounded-sm border" placeholder="Search Partylist">
+                                                    </div>
+                                                   <div class="border w-2/12 flex justify-center items-center">
+                                                    <i class="material-icons">search</i>
+                                                    </div>
+                                               </div>
+                                            @forelse ($partylist as $item)
+                                            <div class="flex space-x-2">
+                                                <div class="w-10/12 border-b">
+                                             <h1>{{ $item->partylist}}-Partylist</h1>
+                                                 </div>
+                                                <div class="w-2/12">
+                                             <div wire:click="getParty({{ $item->id }})" class="flex bg-side text-white rounded-sm cursor-pointer hover:bg-gray-600 justify-center items-center ">
+                                                 <i class="material-icons">playlist_add_check</i>
+                                             </div>
+                                                 </div>
+                                            </div>
+                                            @empty
+                                                
+                                            @endforelse
+                                        </div>
+                                       @endif
                                     </div>
-                                   @endif
-                                </div>
+                                @endif
                                 <div class="mb-2 text-side">
                                     <label for="">Position:</label>
                                     <select wire:model="position_id" class="h-8 w-full outline-none focus:border-green-400 text-sm px-3 mt-1 focus:shadow-md rounded-sm border" >

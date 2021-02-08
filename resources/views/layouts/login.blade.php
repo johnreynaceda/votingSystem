@@ -135,7 +135,7 @@
 
 <body class="font-sans antialiased overflow-hidden">
 <div class="flex mt-10 h-screen">
-    <div class="bg-nav w-8/12">
+    <div class="bg-nav   hidden md:block md:w-8/12">
         <div class="abolute">
             <img src="{{ asset('images/sksu2.jpg') }}" class="opacity-25" alt="">
         </div>
@@ -146,7 +146,7 @@
         
     </div>
     <div class="absolute  p-2">
-        <div class="flex justify-center items-center">
+        <div class="hidden md:flex justify-center items-center">
             <img src="{{ asset('images/sksulogo.png') }}" class="h-40" alt="">
        <div class="flex flex-col">
         <h1 class="text-white text-4xl ml-2 font-bold">SULTAN KUDARAT STATE UNIVERSITY</h1>
@@ -154,7 +154,7 @@
        </div>
         </div>
 
-       <div class="blue-white flex justify-center mt-10">
+       <div class="blue-white hidden  md:flex justify-center mt-10">
         <div class="grid grid-cols-8 gap-2">
             <div><img src="{{ asset('images/sbologo.png') }}" class="h-16" alt=""></div>
             <div><img src="{{ asset('images/css.png') }}" class="h-16" alt=""></div>
@@ -170,12 +170,11 @@
           </div>
        </div>
     </div>
-    <div class=" absolute flex ml-10 bottom-0 right-10">
-        <a href="" class="text-side text-sm font-medium">Developed By:</a><h1 class="text-sm ml-2 text-gray-500"> NacedaBro's</h1>
-    </div>
+   
     
-    <div class="bg-gradient-to-r from-gray-200 via-gray-200 to-gray-300 w-4/12 p-4">
-    <div class=" mt-20">
+    <div class="bg-gradient-to-r from-gray-200 via-gray-200 to-gray-300 w-full md:w-4/12 p-4">
+        <img src="{{ asset('images/sksulogo.png') }}" class="h-20 md:hidden" alt="">   
+    <div class=" mt-6 md:mt-20">
         <h1 class="text-nav text-3xl font-extrabold">SKSU - OVS</h1>
         <h1 class="text-side">Please Sign-in to your account!  </h1>
     </div>
@@ -191,19 +190,26 @@
                             @csrf
                             <div class="mb-3 text-side ">
                                 <label for="sidn">Student ID Number:</label>
-                                <input type="text" name="sidn" :value="old('sidn')" class="h-10 text-side w-full outline-none focus:border-side  text-sm px-3 mt-1 focus:shadow-md rounded-sm border" placeholder="53598">
+                                <input type="text" name="sidn" :value="old('sidn')" class="h-12 md:h-10 text-side w-full outline-none focus:border-side  text-sm px-3 mt-1 focus:shadow-md rounded-sm border" placeholder="53598">
                                 
                             </div>
                             <div class="mb-5 text-side ">
                                 <label for="">Password:</label>
-                                <input type="password" name="password" required autocomplete="current-password" class="h-10 text-side w-full outline-none focus:border-side text-sm px-3 mt-1 focus:shadow-md rounded-sm border" placeholder="*********">
+                                <input type="password" id="password" name="password" required autocomplete="current-password" class="h-12 md:h-10 text-side w-full outline-none focus:border-side text-sm px-3 mt-1 focus:shadow-md rounded-sm border" placeholder="*********">
                                 
                             </div>
                             <div class="mb-5">
-                                <button class="bg-nav p-1 focus:outline-none px-4 rounded text-white font-medium shadow-md hover:bg-green-600 hover:text-side">LOGIN</button>
+                                <button class="bg-nav p-2  md:p-2 focus:outline-none px-4 rounded text-white font-medium shadow-md hover:bg-green-600 hover:text-side">LOGIN</button>
                             </div>
+                            <input type="checkbox" id="checkbox"> Show Password
                             @livewire('navbar')
+
+                           
                          </form>
+                       
+                        </div>
+                        <div class="  flex absolute bottom-0 right-10">
+                            <a href="" class="text-side text-sm font-medium">Developed By:</a><h1 class="text-sm ml-2 text-gray-500"> NacedaBro's</h1>
                         </div>
     </div>
 </div>
@@ -214,6 +220,12 @@
         window.livewire.on('alert', param => {
       toastr[param['type']](param['message']);
   });
+
+  $(document).ready(function(){
+    $('#checkbox').on('change', function(){
+        $('#password').attr('type',$('#checkbox').prop('checked')==true?"text":"password"); 
+    });
+});
       </script>
 </body>
 

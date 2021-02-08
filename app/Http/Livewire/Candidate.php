@@ -14,7 +14,7 @@ use Livewire\WithFileUploads;
 class Candidate extends Component
 {
     use WithFileUploads;
-    public $organizations,$organization_id,$manage,$addModal=false,$candidates;
+    public $organizations,$organization_id,$manage,$addModal=false,$candidates,$editModal=false;
     public $searchStudent=false,$student,$search,$fullname,$student_id, $partylist,$searchParty=false;
     public $partylist_name,$party_id,$position,$photo,$iteration,$isdependent=0,$position_id;
     public function render()
@@ -101,7 +101,7 @@ class Candidate extends Component
             ]);
 
             $data = candidateModel::create([
-                'user' => $this->student_id,
+                'user_id' => $this->student_id,
                 'organization_id' => $this->organization_id,
                 'position_id' => $this->position_id,
             ]);
@@ -132,5 +132,17 @@ class Candidate extends Component
         $this->emit('alert',['type'=>'success','message' => 'Candidate Added Successfully']);
         $this->resetfields();
         $this->addModal=false;
+    }
+
+    public function edit(){
+        $this->editModal = true;
+
+    }
+
+    public function delete($id){
+        candidateModel::find($id)->delete();
+        Image::where('imageable_id',$id)->delete();
+        $this->emit('alert',['type'=>'error','message' => 'Candidate deleted Successfully']);
+
     }
 }

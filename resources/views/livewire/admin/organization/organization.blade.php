@@ -28,11 +28,17 @@
                     <div class="flex p-2 items-center justify-center w-full ">
                         <label for="{{ $organization->organization }}" class="flex items-center cursor-pointer">
                             <div class="relative">
-                                <input id="{{ $organization->organization }}" type="checkbox" class="hidden" />
-                                <div class="toggle__line w-10 h-4 bg-white rounded-full shadow-inner"></div>
-                                <div wire:click="default"
-                                    class="toggle__dot absolute w-6 h-6 bg-nav rounded-full shadow inset-y-0 left-0">
+                               @if ($organization->isdefault == 0)
+                               <div class="relative inline-block w-10  align-middle select-none transition duration-200 ease-in">
+                                <input wire:click="togglein({{ $organization->id }})" type="checkbox" name="toggle" id="toggle"  class="toggle-checkbox  absolute block w-6 h-6 rounded-full bg-nav focus:outline-none border-4 appearance-none cursor-pointer"/>
+                                <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-white cursor-pointer"></label>
+                            </div>
+                                @else
+                                <div class="relative inline-block w-10  align-middle select-none transition duration-200 ease-in">
+                                    <input wire:click="toggleout({{ $organization->id }})" type="checkbox" checked name="toggle" id="toggle"  class="toggle-checkbox  absolute block w-6 h-6 rounded-full bg-nav focus:outline-none border-4 appearance-none cursor-pointer"/>
+                                    <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-white cursor-pointer"></label>
                                 </div>
+                               @endif
                             </div>
                         </label>
                     </div>

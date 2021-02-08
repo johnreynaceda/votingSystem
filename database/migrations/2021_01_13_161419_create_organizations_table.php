@@ -17,6 +17,7 @@ class CreateOrganizationsTable extends Migration
             $table->id();
             $table->string('organization');
             $table->unsignedBigInteger('campus_id');
+            $table->integer('isdefault')->default(0);
             $table->timestamps();
         });
     }

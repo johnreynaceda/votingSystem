@@ -4,9 +4,11 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Position as positionModel;
+use Livewire\WithPagination;
 
 class Position extends Component
 {
+    use WithPagination;
     public $position_name,$position_id,$updateMode=false;
     public function render()
     {
@@ -18,14 +20,14 @@ class Position extends Component
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName,[
-            'position_name' => 'required|regex:/^[a-zA-Z\pL\s\-]+$/u',    
+            'position_name' => 'required',    
         ]);
     }
 
     public function save(){
 
         $this->validate([
-            'position_name' => 'required|regex:/^[a-zA-Z\pL\s\-]+$/u',
+            'position_name' => 'required',
           ]);
 
         positionModel::create([
@@ -49,7 +51,7 @@ class Position extends Component
 
     public function saveedit(){
         $this->validate([
-            'position_name' => 'required|regex:/^[a-zA-Z\pL\s\-]+$/u',
+            'position_name' => 'required',
         ]);
         $data = positionModel::find($this->position_id);
         $data->update([

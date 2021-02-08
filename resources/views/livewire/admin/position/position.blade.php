@@ -32,6 +32,9 @@
             <div class="flex">No Position Data! </div>
         @endforelse
       </div>
+      <div class="mt-5 flex justify-end">
+        {{ $positions->links('layouts.pagination') }}
+    </div>
     </div>
     </div>
 </div>

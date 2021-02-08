@@ -30,4 +30,7 @@ class AdminController extends Controller
     public function user(){
         return view('admin.user');
     }
+    public function print(){
+        return view('admin.print');
+    }
 }

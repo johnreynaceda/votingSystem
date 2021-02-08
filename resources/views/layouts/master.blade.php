@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
@@ -99,7 +100,7 @@
             font-size: 48px;
         }
 
-        .toggle__dot {
+        /* .toggle__dot {
             top: -.25rem;
             left: -.25rem;
             transition: all 0.3s ease-in-out;
@@ -108,7 +109,19 @@
         input:checked ~ .toggle__dot {
         transform: translateX(100%);
         background-color: red;
-        }
+        } */
+
+            
+      .toggle-checkbox:checked {
+        @apply: right-0 border-white;
+        right: 0;
+        border-color: #fff;
+      }
+      .toggle-checkbox:checked + .toggle-label {
+        @apply: bg-red-600;
+        background-color: red;
+      }
+
 
         .toast-success {
         background-color:#0a69aa;
@@ -156,46 +169,18 @@
         background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGwSURBVEhLtZa9SgNBEMc9sUxxRcoUKSzSWIhXpFMhhYWFhaBg4yPYiWCXZxBLERsLRS3EQkEfwCKdjWJAwSKCgoKCcudv4O5YLrt7EzgXhiU3/4+b2ckmwVjJSpKkQ6wAi4gwhT+z3wRBcEz0yjSseUTrcRyfsHsXmD0AmbHOC9Ii8VImnuXBPglHpQ5wwSVM7sNnTG7Za4JwDdCjxyAiH3nyA2mtaTJufiDZ5dCaqlItILh1NHatfN5skvjx9Z38m69CgzuXmZgVrPIGE763Jx9qKsRozWYw6xOHdER+nn2KkO+Bb+UV5CBN6WC6QtBgbRVozrahAbmm6HtUsgtPC19tFdxXZYBOfkbmFJ1VaHA1VAHjd0pp70oTZzvR+EVrx2Ygfdsq6eu55BHYR8hlcki+n+kERUFG8BrA0BwjeAv2M8WLQBtcy+SD6fNsmnB3AlBLrgTtVW1c2QN4bVWLATaIS60J2Du5y1TiJgjSBvFVZgTmwCU+dAZFoPxGEEs8nyHC9Bwe2GvEJv2WXZb0vjdyFT4Cxk3e/kIqlOGoVLwwPevpYHT+00T+hWwXDf4AJAOUqWcDhbwAAAAASUVORK5CYII=") !important;
         }
 
-        .carousel {
-  background: #FAFAFA;
-}
-
-.carousel-cell {
-  width: 66%;
-  height: 200px;
-  margin-right: 10px;
-  background: #8C8;
-  border-radius: 5px;
-  counter-increment: carousel-cell;
-}
-
-/* cell number */
-.carousel-cell:before {
-  display: block;
-  text-align: center;
-  content: counter(carousel-cell);
-  line-height: 200px;
-  font-size: 80px;
-  color: white;
-}
-
-/* gallery focus */
-.flickity-enabled:focus .flickity-viewport {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-}
-
+       
       
     </style>
     
 </head>
 
-<body class="font-sans antialiased overflow-hidden">
+<body class="font-sans antialiased ">
 
     <div class="nav">
         @include('layouts.partials.navbar')
     </div>
-    <div class="flex p-5 space-x-5">
+    <div class="flex  p-5 space-x-5">
         <div class="  w-2/12">
         <div class="bg-gradient-to-r from-nav to-main h-4 flex items-center px-2"></div>
         
@@ -206,7 +191,7 @@
         </div>
         <div class="w-11/12">
         <div class="">
-            <div class="main">
+            <div class="main h-full overflow-auto">
                 @yield('content')
             </div>
         </div>

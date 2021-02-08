@@ -43,6 +43,29 @@
           left: 10px;
           bottom: 0;
         }
+
+         /* width */
+         ::-webkit-scrollbar {
+              width: 6px;
+            }
+            
+            /* Track */
+            ::-webkit-scrollbar-track {
+              box-shadow: inset 0 0 5px rgb(76, 77, 76); 
+              border-radius: 5  px;
+            }
+             
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+              background: #1e421f; 
+              border-radius: 10px;
+            }
+            
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+              background: #00993c; 
+            }
+
         .ldio-es4i676yvyv div:nth-child(1) {
           background: #fffe00;
           animation: ldio-es4i676yvyv 1s linear infinite;
@@ -138,12 +161,13 @@
     <div class="nav">
         @include('layouts.partials.navbar')
     </div>
-    <div class="main px-5">
-    @yield('content')
-    </div>
-    <div class=" absolute flex ml-10 bottom-0">
+    <div class="main relative  h-screen overflow-y-auto bg-gradient-to-tl from-nav">
+     
+      @yield('content')
+      </div>
+    {{-- <div class=" relative flex ml-10">
         <a href="" class="text-blue-700 text-sm font-medium">SKSU_OVS</a><h1 class="text-sm ml-2 text-gray-500">&#169; 2021</h1>
-    </div>
+    </div> --}}
 
 
 

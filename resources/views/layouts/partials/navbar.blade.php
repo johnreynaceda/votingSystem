@@ -4,13 +4,13 @@
     <div class="flex relative w-full">
         <div class="px-3 flex items-center space-x-3 opacity-100  w-10/12   ">
             <img src="{{ asset('images/sksulogo.png') }}" class="h-14" alt="">
-            <h1 class="text-xl font-semibold text-white"> ONLINE VOTING SYSTEM</h1>
+            <h1 class="md:text-xl font-semibold text-white"> ONLINE VOTING SYSTEM</h1>
         </div>
-        <div class="bg-white w-2/12 mx-3 my-2 space-x-1 p-1 flex px-4 shadow-md rounded-full">
-            <div class=" w-2/12 flex justify-center items-center rounded-full">
+        <div class="bg-white w-2/12 mx-3 my-2 md:space-x-1 p-1 flex md:px-4 px-2 shadow-md rounded-full">
+            <div class=" md:w-2/12  md:flex hidden  justify-center items-center rounded-full">
                 <i class="material-icons md-36">account_circle</i>
             </div>
-            <div class=" underline text-side font-medium items-center flex w-9/12">
+            <div class=" underline text-side font-medium items-center flex md:w-9/12">
                 @if (auth()->user()->isadmin == 1)
                     <h1>ADMINISTRATOR</h1>
                 @else
@@ -19,7 +19,7 @@
             </div>
             {{-- <div x-data="{open:false}" class=" cursor-pointer   w-1/12 flex items-center justify-center"> --}}
                 <a href="{{ route('login') }}">
-                    <div  class="bg-nav cursor-pointer hover:bg-green-600 hover:text-ye  rounded-full border text-white flex justify-center items-center  border-side p-1  mr-3 ">
+                    <div  class="bg-nav hidden  cursor-pointer hover:bg-green-600 hover:text-ye  rounded-full border text-white md:flex justify-center items-center  border-side p-1  mr-3 ">
                         <i class="material-icons">vpn_key</i>
                     </div>
                 </a>

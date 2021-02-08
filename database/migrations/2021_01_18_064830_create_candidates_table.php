@@ -20,7 +20,6 @@ class CreateCandidatesTable extends Migration
             $table->unsignedBigInteger('organization_id');
             $table->unsignedBigInteger('position_id');
             $table->integer('isdependent')->default(0);
-            $table->string('totalvotes')->nullable();
             $table->timestamps();
         });
     }

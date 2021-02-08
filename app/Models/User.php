@@ -60,8 +60,18 @@ class User extends Authenticatable
     public function campus(){
         return $this->belongsTo('App\Models\Campus');
     }
+    public function votes(){
+        return $this->hasMany('App\Models\Vote');
+    }
     public function candidates(){
-        return $this->belongsTo('App\Models\Candidate');
+        return $this->hasMany('App\Models\Candidate');
+    }
+
+    public function hasVoted($id)
+    {
+        return (bool) $this->votes->filter(function($v) use($id){
+            return $v->candidate_id == $id;
+        })->count();
     }
     
 }

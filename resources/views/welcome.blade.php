@@ -144,7 +144,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" />
-
+        <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
@@ -262,25 +262,59 @@
         #toast-container > .toast-success {
         background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGwSURBVEhLtZa9SgNBEMc9sUxxRcoUKSzSWIhXpFMhhYWFhaBg4yPYiWCXZxBLERsLRS3EQkEfwCKdjWJAwSKCgoKCcudv4O5YLrt7EzgXhiU3/4+b2ckmwVjJSpKkQ6wAi4gwhT+z3wRBcEz0yjSseUTrcRyfsHsXmD0AmbHOC9Ii8VImnuXBPglHpQ5wwSVM7sNnTG7Za4JwDdCjxyAiH3nyA2mtaTJufiDZ5dCaqlItILh1NHatfN5skvjx9Z38m69CgzuXmZgVrPIGE763Jx9qKsRozWYw6xOHdER+nn2KkO+Bb+UV5CBN6WC6QtBgbRVozrahAbmm6HtUsgtPC19tFdxXZYBOfkbmFJ1VaHA1VAHjd0pp70oTZzvR+EVrx2Ygfdsq6eu55BHYR8hlcki+n+kERUFG8BrA0BwjeAv2M8WLQBtcy+SD6fNsmnB3AlBLrgTtVW1c2QN4bVWLATaIS60J2Du5y1TiJgjSBvFVZgTmwCU+dAZFoPxGEEs8nyHC9Bwe2GvEJv2WXZb0vjdyFT4Cxk3e/kIqlOGoVLwwPevpYHT+00T+hWwXDf4AJAOUqWcDhbwAAAAASUVORK5CYII=") !important;
         }
+        /* external css: flickity.css */
+
+* { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
+
+.carousel {
+  background: #FAFAFA;
+}
+
+.carousel-cell {
+  
+  margin-right: 10px;
+  background: #00993C;
+  border-radius: 1px;
+  
+  counter-increment: carousel-cell;
+}
+
+/* cell number */
+.carousel-cell:before {
+  display: block;
+  text-align: center;
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
+}
+
+/* gallery focus */
+.flickity-enabled:focus .flickity-viewport {
+  outline: none;
+}
+
+
     </style>
 </head>
 
-<body class="font-sans antialiased overflow-hidden">
+<body class="font-sans antialiased ">
 
-    <div class="nav">
+    <div class="nav sticky top-0 z-30">
         <div class=" relative  bg-gradient-to-r from-nav to-main h-16 flex space-x-2 items-center ">
             <img src="{{ asset('images/sksu2.jpg') }}"
                 class=" opacity-25 top-0 object-cover inset-0 z-0 right-0 w-full h-full absolute " alt="">
             <div class="flex relative w-full">
-                <div class="px-3 flex items-center space-x-3 opacity-100  w-10/12   ">
+                <div class="px-3 flex items-center md:space-x-3 space-x-2 opacity-100  w-10/12   ">
                     <img src="{{ asset('images/sksulogo.png') }}" class="h-14" alt="">
-                    <h1 class="text-xl font-semibold text-white"> ONLINE VOTING SYSTEM</h1>
+                    <h1 class="md:text-xl font-semibold text-white"> ONLINE VOTING SYSTEM</h1>
                 </div>
-                <div class="bg-white w-2/12 mx-3 my-2 space-x-1 p-1 flex px-4 shadow-md rounded-full">
-                    <div class=" w-2/12 flex justify-center items-center rounded-full">
+                <div class="md:bg-white w-2/12 mx-3 my-2 space-x-1 p-1  flex px-4 md:shadow-md rounded-full">
+                    <div class=" w-2/12 md:flex text-side justify-center items-center  rounded-full hidden">
                         <i class="material-icons md-36">account_circle</i>
                     </div>
-                    <div class=" underline font-medium items-center flex w-9/12">
+                    <div class=" underline text-side font-medium items-center md:flex w-9/12 hidden">
                        <h1>STUDENT-NO.</h1>
                     </div>
                     {{-- <div x-data="{open:false}" class=" cursor-pointer   w-1/12 flex items-center justify-center"> --}}
@@ -297,17 +331,25 @@
           
         </div>
     </div>
-    
-    <div class=" absolute flex ml-10 bottom-0">
-        <a href="" class="text-blue-700 text-sm font-medium">SKSU_OVS</a><h1 class="text-sm ml-2 text-gray-500">&#169; 2021</h1>
+    <div class="p-5 md:p-10">
+
+<div class="flex space-x-2">
+    <h1 class="font-medium">NOTE: </h1>
+    <h1 class="text-red-700">The system only shows the default organization..</h1>
+</div>
+            
+@livewire('welcome')
     </div>
+    
+    
 
 
 
     @livewireScripts
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
-    <script>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+   <script>
         window.livewire.on('alert', param => {
       toastr[param['type']](param['message']);
   });

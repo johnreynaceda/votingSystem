@@ -10,8 +10,8 @@ class Candidate extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function users(){
-        return $this->hasMany('App\Models\User');
+    public function user(){
+        return $this->belongsTo('App\Models\User');
     }
     public function positions(){
         return $this->hasOne('App\Models\Position', "id", "position_id");
@@ -25,5 +25,13 @@ class Candidate extends Model
     public function image(){
         return $this->morphOne('App\Models\Image','imageable');
     }
+    public function votes(){
+        return $this->hasMany('App\Models\Vote');
+    }
 
+    public function finalVotes()
+    {
+        return $this->hasMany('App\Models\Vote')->where('isfinal',1);
+    }
+   
 }
